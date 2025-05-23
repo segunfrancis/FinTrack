@@ -462,7 +462,7 @@ fun ActivityRow(activity: ActivityItem = dummyActivities().first()) {
                 Text(
                     text = activity.description.first().toString(),
                     style = MaterialTheme.typography.bodyLarge.copy(
-                        color = MaterialTheme.colorScheme.onBackground,
+                        color = Teal,
                         fontWeight = FontWeight.Bold
                     )
                 )

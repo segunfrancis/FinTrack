@@ -4,16 +4,18 @@ package com.segunfrancis.fintrack.ui.auth.register
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
@@ -45,15 +47,18 @@ fun CreateAccountScreen(
     var email by remember { mutableStateOf("") }
     var referral by remember { mutableStateOf("") }
 
-    Box(
+    Column(
         modifier = Modifier
+            .imePadding()
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
     ) {
         Column(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(horizontal = 24.dp, vertical = 0.dp)
+                .fillMaxWidth()
+                .weight(1F)
+                .padding(start = 24.dp, end = 24.dp, bottom = 24.dp)
+                .verticalScroll(rememberScrollState())
         ) {
             Spacer(modifier = Modifier.height(48.dp))
             Text(
@@ -90,7 +95,12 @@ fun CreateAccountScreen(
                 placeholder = "e.g JFH489THF",
                 keyboardType = KeyboardType.Text
             )
-            Spacer(modifier = Modifier.weight(1f))
+        }
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 24.dp)
+        ) {
             Button(
                 onClick = onCreateAccount,
                 shape = RoundedCornerShape(30.dp),
@@ -132,7 +142,7 @@ fun CreateAccountScreen(
                     onClick = { offset ->
                         annotatedText.getStringAnnotations("SIGN_IN", offset, offset)
                             .firstOrNull()?.let {
-                                // TODO: Handle sign in navigation
+                                onSignIn()
                             }
                     }
                 )

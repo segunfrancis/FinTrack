@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
@@ -36,7 +37,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.segunfrancis.fintrack.ui.components.CustomInputField
 import com.segunfrancis.fintrack.ui.theme.FinTrackTheme
-import java.util.regex.Pattern
 
 @Composable
 fun SignInScreen(onSignIn: () -> Unit = {}, onSignUpClick: () -> Unit = {}) {
@@ -44,6 +44,7 @@ fun SignInScreen(onSignIn: () -> Unit = {}, onSignUpClick: () -> Unit = {}) {
 
     Box(
         modifier = Modifier
+            .imePadding()
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
     ) {
