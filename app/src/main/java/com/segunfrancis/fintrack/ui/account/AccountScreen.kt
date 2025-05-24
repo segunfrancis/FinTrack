@@ -54,13 +54,10 @@ fun AccountScreen() {
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
         ) {
-            Spacer(Modifier.height(17.dp))
+            Spacer(Modifier.height(24.dp))
             Text(
                 text = "My Account",
-                style = MaterialTheme.typography.bodyLarge.copy(
-                    fontWeight = FontWeight.Medium,
-                    fontSize = 17.sp,
-                ),
+                style = MaterialTheme.typography.bodyLarge,
                 modifier = Modifier.align(Alignment.CenterHorizontally),
                 color = MaterialTheme.colorScheme.onBackground
             )

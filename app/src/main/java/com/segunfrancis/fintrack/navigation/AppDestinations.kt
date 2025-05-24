@@ -11,7 +11,13 @@ sealed interface AppDestinations {
     data object BudgetDestination : AppDestinations
 
     @Serializable
+    data object CreateBudgetDestination : AppDestinations
+
+    @Serializable
     data object SavingsDestination : AppDestinations
+
+    @Serializable
+    data object CreateSavingsDestination : AppDestinations
 
     @Serializable
     data object ExpensesDestination : AppDestinations

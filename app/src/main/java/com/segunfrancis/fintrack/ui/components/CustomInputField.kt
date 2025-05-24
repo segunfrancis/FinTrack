@@ -28,6 +28,7 @@ fun CustomInputField(
     modifier: Modifier = Modifier,
     keyboardType: KeyboardType = KeyboardType.Text,
     isSingleLine: Boolean = true,
+    prefixText: String? = null,
     visualTransformation: VisualTransformation = VisualTransformation.None
 ) {
     Column(modifier = modifier.fillMaxWidth()) {
@@ -63,7 +64,12 @@ fun CustomInputField(
             ),
             modifier = Modifier
                 .fillMaxWidth()
-                .height(56.dp)
+                .height(56.dp),
+            prefix = if (prefixText.isNullOrBlank()) {
+                null
+            } else {
+                { Text(text = prefixText) }
+            }
         )
     }
 }

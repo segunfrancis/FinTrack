@@ -480,15 +480,17 @@ fun ActivityRow(activity: ActivityItem = dummyActivities().first()) {
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
-                Text(
-                    text = activity.subDescription,
-                    style = MaterialTheme.typography.bodySmall.copy(
-                        color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f),
-                        fontWeight = FontWeight.Normal
-                    ),
-                    fontSize = 13.sp,
-                    maxLines = 1
-                )
+                activity.subDescription?.let {
+                    Text(
+                        text = activity.subDescription,
+                        style = MaterialTheme.typography.bodySmall.copy(
+                            color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f),
+                            fontWeight = FontWeight.Normal
+                        ),
+                        fontSize = 13.sp,
+                        maxLines = 1
+                    )
+                }
             }
             Spacer(Modifier.width(10.dp))
             Text(
@@ -504,50 +506,38 @@ fun ActivityRow(activity: ActivityItem = dummyActivities().first()) {
 }
 
 data class ActivityItem(
-    val displayDate: String,
-    val showDate: Boolean,
     val iconText: String,
     val description: String,
-    val subDescription: String,
+    val subDescription: String?,
     val amount: String
 )
 
 fun dummyActivities(): List<ActivityItem> = listOf(
     ActivityItem(
-        displayDate = "Today, 14/07/2024",
-        showDate = true,
         iconText = "🪙",
         description = "Created a new budget \"Trip to Nairobi\"",
         subDescription = "a day ago",
         amount = "₦200,000.00"
     ),
     ActivityItem(
-        displayDate = "",
-        showDate = false,
         iconText = "J",
         description = "John Ogaga",
         subDescription = "Zenith Bank 12:03 AM",
         amount = "₦10,000.00"
     ),
     ActivityItem(
-        displayDate = "Yesterday, 13/07/2024",
-        showDate = true,
         iconText = "S",
         description = "Salary Credited",
         subDescription = "GTBank 09:00 AM",
         amount = "₦150,000.00"
     ),
     ActivityItem(
-        displayDate = "",
-        showDate = false,
         iconText = "R",
         description = "Recharge Card",
         subDescription = "10:00 AM",
         amount = "₦500.00"
     ),
     ActivityItem(
-        displayDate = "",
-        showDate = false,
         iconText = "💡",
         description = "Paid Electricity Bill",
         subDescription = "PHED",

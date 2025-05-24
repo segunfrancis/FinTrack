@@ -28,8 +28,10 @@ import com.segunfrancis.fintrack.ui.auth.passcode.PasscodeScreen
 import com.segunfrancis.fintrack.ui.auth.register.CreateAccountScreen
 import com.segunfrancis.fintrack.ui.auth.register.VerifyAccountScreen
 import com.segunfrancis.fintrack.ui.budget.BudgetScreen
+import com.segunfrancis.fintrack.ui.budget.CreateBudgetScreen
 import com.segunfrancis.fintrack.ui.expenses.ExpensesScreen
 import com.segunfrancis.fintrack.ui.home.HomeScreen
+import com.segunfrancis.fintrack.ui.savings.CreateSavingsScreen
 import com.segunfrancis.fintrack.ui.savings.SavingsScreen
 import com.segunfrancis.fintrack.ui.theme.FinTrackTheme
 
@@ -106,13 +108,23 @@ class MainActivity : ComponentActivity() {
                             HomeScreen()
                         }
                         composable<AppDestinations.BudgetDestination> {
-                            BudgetScreen()
+                            BudgetScreen(onCreateBudgetClick = {
+                                navController.navigate(AppDestinations.CreateBudgetDestination)
+                            })
+                        }
+                        composable<AppDestinations.CreateBudgetDestination> {
+                            CreateBudgetScreen(onBack = { navController.navigateUp() })
                         }
                         composable<AppDestinations.ExpensesDestination> {
                             ExpensesScreen()
                         }
                         composable<AppDestinations.SavingsDestination> {
-                            SavingsScreen()
+                            SavingsScreen(onCreateSavingsClick = {
+                                navController.navigate(AppDestinations.CreateSavingsDestination)
+                            })
+                        }
+                        composable<AppDestinations.CreateSavingsDestination> {
+                            CreateSavingsScreen(onBack = { navController.navigateUp() })
                         }
                         composable<AppDestinations.AccountDestination> {
                             AccountScreen()
